@@ -69,16 +69,16 @@ if uploaded_file is not None:
                 st.success(f"🌱 **ORGANIC WASTE**\nConfidence: {confidence_percentage:.2f}%")
                 st.markdown("#### Disposal Tips for Organic Waste:")
                 st.markdown("- Compost if possible")
-                    st.markdown("- Use in garden as fertilizer")
-                    st.markdown("- Dispose in the organic waste bin")
+                st.markdown("- Use in garden as fertilizer")
+                st.markdown("- Dispose in the organic waste bin")
                     
-                else:
-                    st.info(f"♻️ **RECYCLABLE WASTE**\nConfidence: {confidence_percentage:.2f}%")
+            else:
+                st.info(f"♻️ **RECYCLABLE WASTE**\nConfidence: {confidence_percentage:.2f}%")
                     
-                    st.markdown("#### Disposal Tips for Recyclable Waste:")
-                    st.markdown("- Clean before recycling")
-                    st.markdown("- Check local recycling guidelines")
-                    st.markdown("- Separate different materials if required")
+                st.markdown("#### Disposal Tips for Recyclable Waste:")
+                st.markdown("- Clean before recycling")
+                st.markdown("- Check local recycling guidelines")
+                st.markdown("- Separate different materials if required")
             
             # Display confidence visualization
             st.markdown("### Confidence Level")
