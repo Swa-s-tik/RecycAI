@@ -67,4 +67,5 @@ if uploaded_file is not None:
             st.markdown("## Classification Result:")
             if category == "Organic":
                 st.success(f"🌱 **ORGANIC WASTE**\nConfidence: {confidence_percentage:.2f}%")
-                st.markdown("#### Disposal Tips for Organic Was
+                st.markdown("#### Disposal Tips for Organic Waste:")
+
