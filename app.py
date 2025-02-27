@@ -68,4 +68,54 @@ if uploaded_file is not None:
             if category == "Organic":
                 st.success(f"🌱 **ORGANIC WASTE**\nConfidence: {confidence_percentage:.2f}%")
                 st.markdown("#### Disposal Tips for Organic Waste:")
+                st.markdown("- Compost if possible")
+                    st.markdown("- Use in garden as fertilizer")
+                    st.markdown("- Dispose in the organic waste bin")
+                    
+                else:
+                    st.info(f"♻️ **RECYCLABLE WASTE**\nConfidence: {confidence_percentage:.2f}%")
+                    
+                    st.markdown("#### Disposal Tips for Recyclable Waste:")
+                    st.markdown("- Clean before recycling")
+                    st.markdown("- Check local recycling guidelines")
+                    st.markdown("- Separate different materials if required")
+            
+            # Display confidence visualization
+            st.markdown("### Confidence Level")
+            fig, ax = plt.subplots(figsize=(8, 2))
+            ax.barh(['Confidence'], [confidence_percentage], 
+                    color='green' if category == "Organic" else 'blue')
+            ax.set_xlim(0, 100)
+            for i, v in enumerate([confidence_percentage]):
+                ax.text(v + 3, i, f"{v:.2f}%", va='center')
+            plt.tight_layout()
+            st.pyplot(fig)
 
+# Add information section
+with st.expander("About RecycAI"):
+    st.write("""
+    RecycAI is an application that uses machine learning to classify waste as either Organic or Recyclable.
+    
+    - **Organic waste** includes food scraps, yard trimmings, and other biodegradable materials.
+    - **Recyclable waste** includes paper, plastic, glass, and metal items that can be processed and reused.
+    
+    The model was trained on a dataset of waste images and can help you determine the proper disposal method for your waste.
+    """)
+
+# Add sidebar with additional information
+st.sidebar.image("logo.png", width=100)
+st.sidebar.title("RecycAI")
+st.sidebar.markdown("---")
+st.sidebar.markdown("### How to use:")
+st.sidebar.markdown("1. Upload an image of waste")
+st.sidebar.markdown("2. Click 'Classify Waste'")
+st.sidebar.markdown("3. View the classification result")
+st.sidebar.markdown("---")
+st.sidebar.markdown("### Accuracy")
+st.sidebar.write("The model provides a confidence score with each prediction. Higher confidence scores indicate more reliable predictions.")
+st.sidebar.markdown("---")
+st.sidebar.markdown("Project developed as part of UCF Project 03")
+
+# Footer
+st.markdown("---")
+st.caption("© 2025 RecycAI | UCF Project 03")
