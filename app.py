@@ -6,6 +6,41 @@ import os
 from PIL import Image
 import matplotlib.pyplot as plt
 
+def set_background(image_file):
+    """
+    Sets a background image for the Streamlit web app.
+    """
+    import base64
+    from pathlib import Path
+
+    # Read the image file
+    img_path = Path(image_file)
+    if not img_path.exists():
+        st.error(f"Background image '{image_file}' not found.")
+        return
+
+    with open(image_file, "rb") as img_file:
+        encoded_string = base64.b64encode(img_file.read()).decode()
+
+    # Custom CSS to set background
+    bg_style = f"""
+    <style>
+    .stApp {{
+        background-image: url("data:image/jpg;base64,{encoded_string}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }}
+    </style>
+    """
+    
+    # Inject the CSS into Streamlit
+    st.markdown(bg_style, unsafe_allow_html=True)
+
+# Call the function to set background
+set_background("bg.jpg")
+
+
 # Set page configuration
 st.set_page_config(
     page_title="RecycAI - Waste Classification",
