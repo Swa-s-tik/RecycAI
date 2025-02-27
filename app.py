@@ -1,5 +1,13 @@
-import numpy as np
 import streamlit as st
+
+# Set page configuration - MOVE THIS TO THE TOP
+st.set_page_config(
+    page_title="RecycAI - Waste Classification",
+    page_icon="♻️",
+    layout="centered"
+)
+
+import numpy as np
 import tensorflow as tf
 from tensorflow.keras.preprocessing.image import load_img, img_to_array
 import os
@@ -7,9 +15,7 @@ from PIL import Image
 import matplotlib.pyplot as plt
 
 def set_background(image_file):
-    """
-    Sets a background image for the Streamlit web app.
-    """
+    """Sets a background image for the Streamlit web app."""
     import base64
     from pathlib import Path
 
@@ -39,7 +45,6 @@ def set_background(image_file):
 
 # Call the function to set background
 set_background("bg.jpg")
-
 
 # Set page configuration
 st.set_page_config(
